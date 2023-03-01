@@ -1,0 +1,14 @@
+.login-link:hover {
+    cursor: pointer;
+}
+/**
+Reference: https://www.w3schools.com/howto/howto_css_center-vertical.asp
+*/
+.signup-section {
+    margin: 0;
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}

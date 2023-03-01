@@ -1,0 +1,72 @@
+<section class="container signup-section">
+    <div class="card mt-5 col-lg-4 col-md-8 col-sm-12 mx-auto p-2">
+        <div class="card-body">
+            <h4 class="card-title mb-4">SignUp to Spring Social</h4>
+            <form [formGroup]="signUpFormGroup" novalidate>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="John Doe" formControlName="name">
+                    <small *ngIf="nameErrorMessage !== ''" class="text-danger">    {{ nameErrorMessage }} </small>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" placeholder="name@example.com" formControlName="email">
+                    <small *ngIf="emailErrorMessage !== ''" class="text-danger">    {{ emailErrorMessage }} </small>
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Your Password" formControlName="password">
+                    <small *ngIf="passwordErrorMessage !== ''" class="text-danger">    {{ passwordErrorMessage }} </small>
+                </div>
+                <div class="mb-3 d-grid gap-2">
+                    <button type="submit" class="btn btn-outline-dark" (click)="signUpUser()" [disabled]="signUpUserLoading">
+                        <span *ngIf="!signUpUserLoading; else signUpSpinnerElseBlock">
+                            SignUp
+                        </span>
+                        <ng-template #signUpSpinnerElseBlock>
+                            <span>Signing up user...</span>
+                        </ng-template> 
+                    </button>
+                </div>
+            </form>
+            <div class="row mb-3">
+                <div class="col-3">
+                    <hr />
+                </div>
+                <div class="col-6 text-center mt-1">
+                    <p>OR signup using</p>
+                </div>
+                <div class="col-3">
+                    <hr />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-6">
+                    <div class="mb-3 d-grid gap-2">
+                        <a type="button" class="btn btn-outline-dark" href={{GOOGLE_AUTH_URL}}>
+                            <span><fa-icon [icon]="faGoogle"></fa-icon></span>
+                            Google
+                        </a>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3 d-grid gap-2">
+                        <a type="button" class="btn btn-outline-dark" href={{GITHUB_AUTH_URL}}>
+                            <span><fa-icon [icon]="faGithub"></fa-icon></span>
+                            Github
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3 text-center">
+                <p>Already have an account ? <span class="login-link" (click)="goToComponent('/login')">Login</span></p>
+            </div>
+            <div class="mb-3 alert alert-danger login-error-alert" role="alert" *ngIf="isOAuth2Error">
+                Error: {{ oAuth2ErrorMessage }}
+            </div>
+            <div class="mb-3 alert alert-danger login-error-alert" role="alert" *ngIf="isSignUpError">
+                Error: {{ signUpErrorMessage }}
+            </div>
+        </div>
+    </div>
+</section>

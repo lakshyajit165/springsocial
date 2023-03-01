@@ -1,0 +1,11 @@
+<section class="container mx-auto profile-section">
+    <div class="col-lg-12 text-center">
+        <img [src]="imageUrl" class="rounded-circle" [alt]="name.substring(0,1)" height="100" width="100" referrerpolicy="no-referrer">
+        <h3>Hi! {{name}}</h3>
+        <p>Welcome to Spring Social!</p>
+        <button type="button" class="btn btn-dark" (click)="logout()">
+            Logout
+            <span><fa-icon [icon]="faSignOut"></fa-icon></span>
+        </button>
+    </div>
+</section>

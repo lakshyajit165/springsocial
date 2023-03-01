@@ -1,0 +1,69 @@
+<section class="container login-section">
+    <div class="card mt-5 col-lg-4 col-md-8 col-sm-12 mx-auto p-2">
+        <div class="card-body">
+            <h4 class="card-title mb-4">Login to Spring Social</h4>
+            <form [formGroup]="loginFormGroup" novalidate>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" placeholder="name@example.com" formControlName="email">
+                    <small *ngIf="emailErrorMessage !== ''" class="text-danger">    {{ emailErrorMessage }} </small>
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" is-invalid placeholder="Your Password" formControlName="password">
+                    <small *ngIf="passwordErrorMessage !== ''" class="text-danger">{{ passwordErrorMessage }}</small>
+                </div>
+                <div class="mb-3 d-grid gap-2">
+                    <button type="submit" class="btn btn-outline-dark" (click)="loginUser()" [disabled]="loginUserLoading">
+                        <span *ngIf="!loginUserLoading; else loginSpinnerElseBlock">
+                            Login
+                        </span>
+                        <ng-template #loginSpinnerElseBlock>
+                            <span>Logging in...</span>
+                        </ng-template>            
+                    </button>
+                </div>
+            </form>
+            <div class="row mb-3">
+                <div class="col-3">
+                    <hr />
+                </div>
+                <div class="col-6 text-center mt-1">
+                    <p>OR login using</p>
+                </div>
+                <div class="col-3">
+                    <hr />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-6">
+                    <div class="mb-3 d-grid gap-2">
+                        <a type="button" class="btn btn-outline-dark" href={{GOOGLE_AUTH_URL}}>
+                            <span><fa-icon [icon]="faGoogle"></fa-icon></span>
+                            Google
+                        </a>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3 d-grid gap-2">
+                        <a type="button" class="btn btn-outline-dark" href={{GITHUB_AUTH_URL}}>
+                            <span><fa-icon [icon]="faGithub"></fa-icon></span>
+                            Github
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3 text-center">
+                <p>Don't have an account ? <span class="signup-link" (click)="goToComponent('/signup')">Signup</span>
+                </p>
+            </div>
+            <div class="mb-3 alert alert-danger login-error-alert" role="alert" *ngIf="isOAuth2Error">
+                Error: {{ oAuth2ErrorMessage }}
+            </div>
+            <div class="mb-3 alert alert-danger login-error-alert" role="alert" *ngIf="isLoginError">
+                Error: {{ loginErrorMessage }}
+                <span><fa-icon [icon]="faXmark"></fa-icon></span>
+            </div>
+        </div>
+    </div>
+</section>
