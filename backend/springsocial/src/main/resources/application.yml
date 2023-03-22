@@ -1,6 +1,13 @@
 server:
     port: 8000
+    error:
+        include-stacktrace: never
 spring:
+    jackson:
+        default-property-inclusion: non_null # to NOT include any null values in the json response
+        time-zone: UTC
+        serialization:
+            WRITE_DATES_AS_TIMESTAMPS: 'false'
     datasource:
         url: jdbc:postgresql://localhost:5432/spring_social?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
         platform: postgres

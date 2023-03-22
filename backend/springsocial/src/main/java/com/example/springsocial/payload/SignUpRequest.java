@@ -7,14 +7,14 @@ import lombok.Setter;
 
 
 public class SignUpRequest {
-    @NotBlank
+    @NotBlank(message = "Name is required")
     private String name;
 
-    @NotBlank
-    @Email
+    @Email(message = "Email must be valid")
+    @NotBlank(message = "Email is required")
     private String email;
 
-    @NotBlank
+    @NotBlank(message = "Password is required")
     private String password;
 
     public String getName() {
