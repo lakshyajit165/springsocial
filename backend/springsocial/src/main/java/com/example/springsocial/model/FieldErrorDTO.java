@@ -1,9 +1,13 @@
 package com.example.springsocial.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Arrays;
 import java.util.List;
 
-
+@Getter
+@Setter
 public class FieldErrorDTO {
 
     private String message;
@@ -16,22 +20,6 @@ public class FieldErrorDTO {
     public FieldErrorDTO(final String message, final List<String> errors) {
         super();
         this.message = message;
-        this.errors = errors;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public List<String> getErrors() {
-        return errors;
-    }
-
-    public void setErrors(List<String> errors) {
         this.errors = errors;
     }
 
