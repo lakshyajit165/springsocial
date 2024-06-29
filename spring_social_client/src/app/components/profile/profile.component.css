@@ -1,8 +1,31 @@
 .profile-section {
-    margin: 0;
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+  margin: 0;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.profile-img-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rounded-circle {
+  border-radius: 50%;
+}
+
+.avatar {
+  color: #fff;
+  padding: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
+  font-size: large;
+  font-weight: 800;
+  background: lightcoral;
 }
